@@ -1,7 +1,6 @@
-#include "list.h"
+#include <stdio.h>
 #include <stdlib.h>
-#include "fatal.h"
-
+#include "linklist.h"
 // 定义链表结构体
 struct Node
 {
@@ -11,7 +10,11 @@ struct Node
 
 int main(int argc, char const *argv[])
 {
+	printf("2");
+	exit;printf("首节点：%d\n",first->Element);
 	List list = init();
+	insertAfter(list,1,list);
+	insertAfter(list,2,list);
 	Position first = first(list);
 	printf("首节点：%d\n",first->Element);
 	Position last = last(list);
@@ -75,7 +78,7 @@ ElementType remove(Position p,List list){
 	free(p);
 }
 
-void delete(List list){
+void delete(List *list){
 	
 }
 /**

@@ -14,14 +14,11 @@ Position first();
 //末节点
 Position last();
 //将e当作首节点插入
-List insertAsFirst(ElementType e);
+void insertAsFirst(List list,ElementType e);
 //将e当作末节点插入
-List insertAsLast(ElementType e);
-//将e当作节点P的直接前驱插入
-void insertBefore(Postion p, ElementType e,List list);
-//将e当作节点P的直接后继插入
-void insertAfter(Postion p, ElementType e,List list);
-//删除位置p处的节点，并返回其数值
-ElementType remove(Postion p);
-//查找目标元素e，失败时返回NULL
-Postion find(ElementType e);
+void insertAsLast(List list,ElementType e);
+void fillList(List list);
+void makeEmpty(List list);
+Position find(List list,int index);
+void insert(List list,ElementType e,int index);
+void printList(List list);

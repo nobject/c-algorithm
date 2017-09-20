@@ -1,6 +1,6 @@
 #define CAPACITY 16;
 #define GROTHFACTOR 2;  //增长比率因子
-#define SHRINKFACTOR 4; //缩小比率因子
+#define SHRINKFACTOR 2; //缩小比率因子
 // 定义动态数组结构
 typedef struct {
 	int *array;

@@ -28,6 +28,9 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+/**
+* 创建一个动态数组
+*/
 Array *create(int capacity) {
 	Array *arrptr;
 	arrptr = malloc(sizeof(Array));
@@ -37,12 +40,21 @@ Array *create(int capacity) {
 	arrptr->size = 0;
 	return arrptr;
 }
+/**
+* 获取动态数组内的元素个数
+*/
 int size(Array *arrptr) {
 	return arrptr->size;
 }
+/**
+* 获取动态数组的容量大小
+*/
 int capacity(Array *arrptr) {
 	return arrptr->capacity;
 }
+/**
+* 判断动态数组容量是否为空
+*/
 bool is_empty(Array *arrptr) {
 	if (arrptr->size == 0) {
 		return true;
@@ -50,13 +62,18 @@ bool is_empty(Array *arrptr) {
 		return false;
 	}
 }
+/**
+* 获取动态数组某个索引下的值
+*/
 int at(Array *arrptr, int index) {
 	if (index > arrptr->size - 1 || index < 0) {
 		exit(0);
 	}
 	return *(arrptr->array + index);
 }
-
+/**
+* 在数组末尾增加一个元素
+*/
 void push(Array *arrptr, int item) {
 	//判断空间是否足够,如果不够，需要扩容
 	if (arrptr->size == arrptr->capacity) {
@@ -65,6 +82,9 @@ void push(Array *arrptr, int item) {
 	*(arrptr->array + arrptr->size) = item;
 	arrptr->size++;
 }
+/**
+* 在指定的位置增加一个元素
+*/
 void insert(Array *arrptr, int index, int item) {
 	//判断空间是否足够,如果不够，需要扩容
 	if (arrptr->size == arrptr->capacity) {
@@ -80,9 +100,15 @@ void insert(Array *arrptr, int index, int item) {
 	*(arrptr->array + index) = item;
 	arrptr->size++;
 }
+/**
+* 在数组头部插入一个元素
+*/
 void prepend(Array *arrptr , int item) {
 	insert(arrptr, 0, item);
 }
+/**
+* 获取数组头部元素的值
+*/
 int pop(Array *arrptr) {
 	if (arrptr->size < 0) {
 		exit(0);
@@ -91,16 +117,21 @@ int pop(Array *arrptr) {
 	arrptr->size--;
 	return popItem;
 }
+/**
+* 删除指定位置下的元素
+*/
 void delete(Array *arrptr, int index) {
 	if (arrptr->size < 0) {
 		exit(0);
 	}
-	int *array = arrptr->array;
 	while (index < arrptr->size - 1) {
-		*(arrptr->array - 1 + index++) = *(array + index);
+		*(arrptr->array - 1 + index++) = *(arrptr->array + index);
 	}
 	arrptr->size--;
 }
+/**
+* 根据值删除
+*/
 void delByValue(Array *arrptr, int item) {
 	int index = 0;
 	while (index < arrptr->size) {
@@ -113,6 +144,9 @@ void delByValue(Array *arrptr, int item) {
 		delete(arrptr, index);
 	}
 }
+/**
+* 查找值
+*/
 int find(Array *arrptr, int item) {
 	int index = 0;
 	while (index < arrptr->size) {
@@ -143,15 +177,15 @@ void resize(Array *arrptr , int type) {
   	arrptr->capacity = capacity;
 	arrptr->array = array;
 }
-
+/**
+* 打印
+*/
 void print(Array *arrptr) {
-	printf("Size: %d\n", arrptr->size);
-	printf("Capacity: %d\n", arrptr->capacity);
-
-	printf("Items:\n");
+	printf("size: %d\n", arrptr->size);
+	printf("capacity: %d\n", arrptr->capacity);
+	printf("items:\n");
 	for (int i = 0; i < arrptr->size; ++i) {
 		printf("%d: %d\n", i, *(arrptr->array + i));
 	}
-
 	printf("---------\n");
 }
